@@ -1,0 +1,3 @@
+# hero video and other large media stay local unless you decide otherwise
+videos/*
+!videos/.gitkeep

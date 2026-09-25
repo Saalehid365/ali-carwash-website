@@ -1,193 +1,165 @@
 (function () {
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* Header scroll state */
-  var header = document.querySelector('.site-header');
-  var hero = document.querySelector('.hero');
-  function onScroll() {
-    var threshold = hero ? hero.offsetHeight - 110 : 140;
-    if (window.scrollY > threshold) header.classList.add('is-scrolled');
-    else header.classList.remove('is-scrolled');
+  function store(get, key, val) {
+    try { return get ? localStorage.getItem(key) : localStorage.setItem(key, val); } catch (e) { return null; }
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 
-  /* Mobile menu */
+  /* ---------- Mobile menu + "Book" dropdown ---------- */
+  var nav = document.getElementById('nav');
   var menuToggle = document.querySelector('.menu-toggle');
-  var mobileNav = document.getElementById('mobileNav');
-  function closeMenu() {
-    mobileNav.classList.remove('is-open');
-    menuToggle.classList.remove('is-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    mobileNav.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-  function openMenu() {
-    mobileNav.classList.add('is-open');
-    menuToggle.classList.add('is-open');
-    menuToggle.setAttribute('aria-expanded', 'true');
-    mobileNav.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-  if (menuToggle && mobileNav) {
+  if (menuToggle && nav) {
     menuToggle.addEventListener('click', function () {
-      mobileNav.classList.contains('is-open') ? closeMenu() : openMenu();
+      var open = nav.classList.toggle('is-open');
+      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    mobileNav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', closeMenu);
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        nav.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+  var drop = document.querySelector('.nav-drop');
+  var dropBtn = document.querySelector('.nav-drop-btn');
+  if (drop && dropBtn) {
+    dropBtn.addEventListener('click', function () {
+      var open = drop.classList.toggle('is-open');
+      dropBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!drop.contains(e.target)) { drop.classList.remove('is-open'); dropBtn.setAttribute('aria-expanded', 'false'); }
     });
   }
 
-  /* Scroll reveal */
-  var revealEls = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
-    );
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-  }
-
-  /* Animated counters */
-  var counters = document.querySelectorAll('.count-num');
-  function animateCount(el) {
-    var target = parseFloat(el.getAttribute('data-target'));
-    var decimals = el.getAttribute('data-decimals') === '1' ? 1 : 0;
-    if (reduceMotion) {
-      el.textContent = target.toFixed(decimals);
-      return;
+  /* ---------- Hero video: respect reduced motion (poster stays) ---------- */
+  var video = document.querySelector('.hero-video');
+  if (video) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.removeAttribute('autoplay');
+      video.pause();
+    } else {
+      // Slow-motion feel: play the clip at half speed (change 0.5 to taste, e.g. 0.4 or 0.7).
+      video.playbackRate = 0.5;
+      video.addEventListener('loadedmetadata', function () { video.playbackRate = 0.5; });
+      video.addEventListener('play', function () { video.playbackRate = 0.5; });
     }
-    var start = null;
-    var duration = 1400;
-    function step(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = (target * eased).toFixed(decimals);
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  if (counters.length && 'IntersectionObserver' in window) {
-    var cio = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            animateCount(entry.target);
-            cio.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.6 }
-    );
-    counters.forEach(function (el) { cio.observe(el); });
   }
 
-  /* Before / after slider */
-  var baRange = document.getElementById('baRange');
-  var baBefore = document.getElementById('baBefore');
-  var baHandle = document.getElementById('baHandle');
-  var baSeam = document.getElementById('baSeam');
-  function updateBA(v) {
-    baBefore.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
-    baHandle.style.left = v + '%';
-    if (baSeam) baSeam.style.left = v + '%';
-  }
-  if (baRange) {
-    baRange.addEventListener('input', function (e) { updateBA(e.target.value); });
-    updateBA(baRange.value);
+  /* ---------- Back to top ---------- */
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    window.addEventListener('scroll', function () {
+      toTop.classList.toggle('is-shown', window.scrollY > 600);
+    }, { passive: true });
+    toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 
-  /* Review carousel */
-  var track = document.getElementById('reviewTrack');
-  var prevBtn = document.getElementById('reviewPrev');
-  var nextBtn = document.getElementById('reviewNext');
-  function cardStep() {
-    var card = track.querySelector('blockquote');
-    return card ? card.getBoundingClientRect().width + 48 : 400;
-  }
-  if (track && prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', function () {
-      track.scrollBy({ left: -cardStep(), behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', function () {
-      track.scrollBy({ left: cardStep(), behavior: 'smooth' });
+  /* ---------- Cookie notice ---------- */
+  var cookie = document.getElementById('cookie');
+  var cookieBtn = document.getElementById('cookieAccept');
+  if (cookie && cookieBtn) {
+    if (!store(true, 'acw-cookies')) cookie.hidden = false;
+    cookieBtn.addEventListener('click', function () {
+      store(false, 'acw-cookies', 'yes');
+      cookie.hidden = true;
     });
   }
 
-  /* Tyre quote tool */
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    var panel = item.querySelector('.faq-a');
+    panel.style.transition = 'height .3s ease';
+    btn.addEventListener('click', function () {
+      var open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.style.height = open ? panel.scrollHeight + 'px' : '0px';
+    });
+  });
+
+  /* ---------- Before / after slider ---------- */
+  var frame = document.querySelector('.ba-frame');
+  var beforeClip = document.getElementById('baBeforeClip');
+  var seam = document.getElementById('baSeam');
+  var handle = document.getElementById('baHandle');
+  if (frame && beforeClip && seam && handle) {
+    var pos = 50;
+    var setPos = function (v) {
+      pos = Math.max(0, Math.min(100, v));
+      beforeClip.style.clipPath = 'inset(0 ' + (100 - pos) + '% 0 0)';
+      seam.style.left = pos + '%';
+      handle.setAttribute('aria-valuenow', Math.round(pos));
+    };
+    var toPercent = function (x) {
+      var r = frame.getBoundingClientRect();
+      return ((x - r.left) / r.width) * 100;
+    };
+    var dragging = false, pid = null;
+    frame.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      dragging = true;
+      pid = e.pointerId;
+      frame.setPointerCapture(pid);
+      setPos(toPercent(e.clientX));
+    });
+    frame.addEventListener('pointermove', function (e) {
+      if (dragging && e.pointerId === pid) setPos(toPercent(e.clientX));
+    });
+    ['pointerup', 'pointercancel'].forEach(function (evt) {
+      frame.addEventListener(evt, function () { dragging = false; });
+    });
+    handle.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') setPos(pos - 4);
+      if (e.key === 'ArrowRight') setPos(pos + 4);
+    });
+  }
+
+  /* ---------- Tyre quote tool ---------- */
   var tyreForm = document.getElementById('tyreForm');
   var tyreResult = document.getElementById('tyreResult');
   function tyrePrice(width, profile, rim) {
-    var base = 38;
-    var widthFactor = ((width - 155) / 10) * 3.4;
-    var rimFactor = (rim - 13) * 7.5;
-    var profileFactor = ((80 - profile) / 5) * 1.6;
-    var price = base + widthFactor + rimFactor + profileFactor;
+    var price = 38 + ((width - 155) / 10) * 3.4 + (rim - 13) * 7.5 + ((80 - profile) / 5) * 1.6;
     price = Math.max(42, Math.min(195, price));
     return Math.round(price / 5) * 5;
   }
   if (tyreForm) {
     tyreForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var width = parseInt(document.getElementById('tyreWidth').value, 10);
-      var profile = parseInt(document.getElementById('tyreProfile').value, 10);
-      var rim = parseInt(document.getElementById('tyreRim').value, 10);
-      var price = tyrePrice(width, profile, rim);
-      document.getElementById('tyreResultSize').textContent = width + '/' + profile + ' R' + rim;
-      var priceEl = document.getElementById('tyreResultPrice');
+      var w = parseInt(document.getElementById('tyreWidth').value, 10);
+      var p = parseInt(document.getElementById('tyreProfile').value, 10);
+      var r = parseInt(document.getElementById('tyreRim').value, 10);
+      var used = tyreForm.elements.tyreType.value === 'used';
+      var price = tyrePrice(w, p, r);
+      if (used) price = Math.max(20, Math.round((price * 0.55) / 5) * 5);
+      document.getElementById('tyreResultSize').textContent = (used ? 'Part worn' : 'New') + ' \u2022 ' + w + '/' + p + ' R' + r;
+      document.getElementById('tyreResultPrice').textContent = '£' + price;
+      document.getElementById('tyreResultNote').textContent = used
+        ? 'Fitted price per part-worn tyre, inc. balancing & disposal. Inspected and road-legal, subject to stock.'
+        : 'Fitted price per tyre, inc. balancing & disposal.';
       tyreResult.hidden = false;
-      if (reduceMotion) {
-        priceEl.textContent = '£' + price;
-      } else {
-        var start = null;
-        var duration = 700;
-        (function step(ts) {
-          if (!start) start = ts;
-          var p = Math.min((ts - start) / duration, 1);
-          var val = Math.round(price * (1 - Math.pow(1 - p, 3)));
-          priceEl.textContent = '£' + val;
-          if (p < 1) requestAnimationFrame(step);
-        })();
-      }
-      tyreResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }
 
-  /* Booking form */
+  /* ---------- Booking form ---------- */
   var bookingForm = document.getElementById('bookingForm');
   var bookingSuccess = document.getElementById('bookingSuccess');
   var bookingRef = document.getElementById('bookingRef');
-  var bookAgainBtn = document.getElementById('bookAgain');
+  var bookAgain = document.getElementById('bookAgain');
   function genRef() {
-    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    var s = '';
+    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = '';
     for (var i = 0; i < 5; i++) s += chars[Math.floor(Math.random() * chars.length)];
     return 'ACW-' + s;
   }
   if (bookingForm) {
     bookingForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!bookingForm.checkValidity()) {
-        bookingForm.reportValidity();
-        return;
-      }
+      if (!bookingForm.checkValidity()) { bookingForm.reportValidity(); return; }
       bookingRef.textContent = genRef();
       bookingForm.hidden = true;
       bookingSuccess.hidden = false;
     });
   }
-  if (bookAgainBtn) {
-    bookAgainBtn.addEventListener('click', function () {
+  if (bookAgain) {
+    bookAgain.addEventListener('click', function () {
       bookingForm.reset();
       bookingForm.hidden = false;
       bookingSuccess.hidden = true;

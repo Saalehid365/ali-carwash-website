@@ -3,154 +3,171 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Ali Car Wash and Tyres. Meticulous detailing, trusted tyre care, and a finish that feels brand new." />
-    <title>Ali Car Wash & Tyres | Drive Away Different</title>
+    <meta name="description" content="Ali Car Wash and Tyres, 95 Wright St, Small Heath, Birmingham B10 9SP. Hand car wash, valeting and tyre fitting — book online." />
+    <title>Ali Car Wash &amp; Tyres | Small Heath, Birmingham</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-loader" aria-hidden="true"><span>Ali Car Wash &amp; Tyres</span><span class="loader-line"></span></div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header" id="top">
-      <a class="brand" href="#top" aria-label="Ali Car Wash and Tyres home">
-        <span class="brand-mark">A</span>
-        <span class="brand-name">Ali <em>Car Wash</em><small>& Tyres</small></span>
-      </a>
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="#difference">Our difference</a>
-        <a href="#packages">Packages</a>
-        <a href="#tyres">Tyres</a>
-        <a href="#reviews">Reviews</a>
-      </nav>
-      <a class="header-cta" href="#booking">Book a clean</a>
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+    <!-- HEADER: floating rounded bar -->
+    <header class="header" id="top">
+      <div class="header-bar">
+        <a class="logo" href="#top" aria-label="Ali Car Wash and Tyres home">
+          <iconify-icon class="logo-mark" icon="solar:wheel-linear" width="38"></iconify-icon>
+          <span class="logo-text"><span class="logo-name">ALI</span><span class="logo-sub">Car Wash &amp; Tyres</span></span>
+        </a>
+        <nav class="nav" id="nav" aria-label="Main navigation">
+          <a class="nav-link is-active" href="#top">Home</a>
+          <div class="nav-drop">
+            <button class="nav-link nav-drop-btn" type="button" aria-expanded="false" aria-haspopup="true">Book <iconify-icon icon="solar:alt-arrow-down-linear" width="12"></iconify-icon></button>
+            <div class="nav-drop-menu">
+              <a href="#prices">Wash &amp; valet</a>
+              <a href="#tyres">Tyre fitting</a>
+              <a href="#booking">Request a booking</a>
+            </div>
+          </div>
+          <a class="nav-link" href="#tyres">Tyres</a>
+          <a class="nav-link" href="#reviews">Reviews</a>
+          <a class="nav-link" href="#booking">Contact</a>
+          <a class="nav-link nav-phone" href="tel:+447572631215" aria-label="Call 07572 631215"><iconify-icon icon="solar:phone-calling-bold" width="22"></iconify-icon><span class="nav-phone-text">07572 631215</span></a>
+        </nav>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <iconify-icon icon="solar:hamburger-menu-linear" width="26"></iconify-icon>
+        </button>
+      </div>
     </header>
 
-    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <nav aria-label="Mobile navigation">
-        <a href="#difference">Our difference</a>
-        <a href="#packages">Packages</a>
-        <a href="#tyres">Tyres</a>
-        <a href="#reviews">Reviews</a>
-      </nav>
-      <a class="button button-primary" href="#booking">Book a clean <span>↗</span></a>
-      <div class="mobile-nav-meta"><span>020 7946 0111</span><span>18 Westbourne Grove, London W2</span></div>
-    </div>
-
-    <main>
+    <main id="main">
+      <!-- HERO: looping muted video (drop your file at videos/hero.mp4). The poster shows until it loads / if it is missing. -->
       <section class="hero">
-        <div class="hero-media" aria-hidden="true">
-          <div class="hero-gradient"></div>
-          <div class="hero-tyre"></div>
-          <div class="hero-grain"></div>
-        </div>
-        <div class="hero-shade"></div>
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg" aria-hidden="true">
+          <source src="videos/hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-tint" aria-hidden="true"></div>
         <div class="hero-content">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Car care, considered</p>
-          <h1><span><b class="w-light">Drive away</b></span><span><b class="w-bold">different.</b></span></h1>
-          <p class="hero-copy">Meticulous cleans. Expert tyre care.<br />A better kind of car wash in the heart of London.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#booking">Book your clean <span>↗</span></a>
-            <a class="text-link" href="#packages">Explore packages <span>↓</span></a>
-          </div>
+          <h5>Welcome to</h5>
+          <h2>Ali Car Wash</h2>
+          <h4>Small Heath&rsquo;s trusted hand car wash &amp; tyre garage</h4>
+          <a class="hero-bar" href="#booking"><iconify-icon icon="solar:map-point-bold" width="22"></iconify-icon> Book a wash or valet</a>
+          <a class="hero-bar" href="#tyres"><iconify-icon icon="solar:wheel-bold" width="22"></iconify-icon> Get a tyre quote</a>
+          <p class="hero-meta"><span><iconify-icon icon="solar:star-bold" width="15"></iconify-icon> 4.5 on Google</span><span>Open daily 07:00&ndash;19:00</span></p>
         </div>
-        <div class="hero-meta">
-          <span>51.5072° N</span><span class="meta-rule"></span><span>0.1276° W</span>
-        </div>
-        <div class="hero-scroll"><span>Scroll to explore</span><span class="scroll-line"></span></div>
-        <div class="hero-number">01 <span>/ 07</span></div>
+        <a class="hero-more" href="#prices"><h5>Read more</h5></a>
       </section>
 
-      <section class="intro section-pad" id="difference">
-        <div class="section-label"><span>01</span><span class="label-rule"></span><span>Our difference</span></div>
-        <div class="intro-grid">
-          <h2 data-reveal><span class="w-light">Not just clean.</span> <span class="w-bold">Looked after.</span></h2>
-          <div class="intro-copy" data-reveal><p>There is a certain feeling when you get back into a properly cared-for car. That is what we are here for.</p><p>From the first rinse to the final tyre shine, every detail is handled with the kind of attention your car deserves.</p><a class="arrow-link" href="#packages">The Ali standard <span>↗</span></a></div>
+      <!-- BOOK -->
+      <section class="section" id="prices">
+        <div class="intro">
+          <iconify-icon class="neon" icon="solar:calendar-linear" width="64"></iconify-icon>
+          <h5 class="intro-label">Book a wash or valet</h5>
+          <h2>Book your clean</h2>
+          <p class="intro-sub">Choose a service and book in under 60 seconds</p>
         </div>
-        <div class="stat-row" data-reveal>
-          <div class="stat"><strong><span class="count-num" data-target="15">0</span><span>+</span></strong><small>Years of craft</small></div>
-          <div class="stat"><strong><span class="count-num" data-target="4.9" data-decimals="1">0</span><span>★</span></strong><small>Customer rating</small></div>
-          <div class="stat"><strong><span class="count-num" data-target="20">0</span><span>k</span></strong><small>Cars made brighter</small></div>
-          <div class="stat stat-note"><span class="dot"></span><small>Open today<br /><b>07:00 — 19:00</b></small></div>
-        </div>
-      </section>
 
-      <section class="services section-pad" id="services">
-        <div class="section-heading"><div class="section-label"><span>02</span><span class="label-rule"></span><span>What we do</span></div><p>Good care is in the details. Choose yours.</p></div>
-        <div class="service-grid">
-          <article class="service-card service-featured" data-reveal><div class="service-image wash-image"></div><div class="service-overlay"></div><div class="service-content"><span class="service-index">01 / Wash</span><h3><span class="w-light">The Full</span><br /><span class="w-bold">Refresh</span></h3><p>Inside, outside, and every detail in between.</p><a href="#packages" class="circle-arrow" aria-label="See wash packages">↗</a></div></article>
-          <article class="service-card tyre-card" data-reveal><div class="tyre-visual"><div class="tyre-ring ring-one"></div><div class="tyre-ring ring-two"></div><div class="tyre-hub"></div></div><div class="service-content"><span class="service-index">02 / Tyres</span><h3><span class="w-light">Grip with</span><br /><span class="w-bold">confidence.</span></h3><p>Fitting, balancing, and advice you can trust.</p><a href="#tyres" class="circle-arrow" aria-label="See tyre services">↗</a></div></article>
-          <article class="service-card detail-card" data-reveal><div class="detail-lines"></div><div class="service-content"><span class="service-index">03 / Detail</span><h3><span class="w-light">Made to</span><br /><span class="w-bold">last.</span></h3><p>Protection and polish for the long road.</p><a href="#packages" class="circle-arrow dark-arrow" aria-label="See detailing package">↗</a></div></article>
-        </div>
-      </section>
+        <div class="cards">
+          <article class="card card-grey">
+            <h3>Exterior shine</h3>
+            <p class="card-price"><small>from</small>&pound;18</p>
+            <p class="card-time">Around 20 minutes</p>
+            <ul class="card-list">
+              <li>Hand wash &amp; foam rinse</li>
+              <li>Wheels &amp; arches cleaned</li>
+              <li>Tyre shine finish</li>
+              <li>Chamois dry</li>
+            </ul>
+            <a class="btn btn-outline" href="#booking">Book Express</a>
+          </article>
 
-      <section class="packages section-pad" id="packages">
-        <div class="section-heading"><div class="section-label"><span>03</span><span class="label-rule"></span><span>Packages</span></div><p>Three ways to leave looking sharp.</p></div>
-        <div class="package-sheet" data-reveal>
-          <div class="package-grid">
-            <div class="package-col">
-              <span class="package-tag">01</span>
-              <div class="package-top"><h3>Express Shine</h3><p class="package-desc">A quick, thorough exterior refresh.</p></div>
-              <div class="package-price"><span>£18</span><small>~20 mins</small></div>
-              <ul class="package-list">
-                <li>Hand wash &amp; foam rinse</li>
-                <li>Wheels &amp; arches cleaned</li>
-                <li>Tyre shine finish</li>
-                <li>Chamois dry</li>
-              </ul>
-              <a class="button button-outline" href="#booking">Book Express <span>↗</span></a>
-            </div>
-            <div class="package-col package-featured">
-              <span class="package-tag">02 · Most booked</span>
-              <div class="package-top"><h3>Signature Valet</h3><p class="package-desc">Our most popular full inside-out clean.</p></div>
-              <div class="package-price"><span>£42</span><small>~55 mins</small></div>
-              <ul class="package-list">
-                <li>Everything in Express Shine</li>
-                <li>Full interior vacuum</li>
-                <li>Dash, doors &amp; console wiped</li>
-                <li>Windows, in and out</li>
-                <li>Air freshener</li>
-              </ul>
-              <a class="button button-primary" href="#booking">Book Signature <span>↗</span></a>
-            </div>
-            <div class="package-col">
-              <span class="package-tag">03</span>
-              <div class="package-top"><h3>Full Detail</h3><p class="package-desc">Machine polish and deep protection.</p></div>
-              <div class="package-price"><span>£95</span><small>~3 hrs · by appointment</small></div>
-              <ul class="package-list">
-                <li>Everything in Signature Valet</li>
-                <li>Clay bar decontamination</li>
-                <li>Machine polish &amp; wax</li>
-                <li>Fabric &amp; leather protection</li>
-                <li>Engine bay wipe-down</li>
-              </ul>
-              <a class="button button-outline" href="#booking">Book Full Detail <span>↗</span></a>
-            </div>
-          </div>
+          <article class="card card-accent">
+            <h3>Signature valet</h3>
+            <p class="card-price"><small>from</small>&pound;42</p>
+            <p class="card-time">Around 55 minutes</p>
+            <ul class="card-list">
+              <li class="card-list-plus"><iconify-icon icon="solar:arrow-up-linear" width="14"></iconify-icon> Everything in exterior, plus:</li>
+              <li>Full interior vacuum</li>
+              <li>Dash, doors &amp; console wiped</li>
+              <li>Windows, in and out</li>
+              <li>Air freshener</li>
+            </ul>
+            <a class="btn btn-accent" href="#booking">Book Signature</a>
+          </article>
+
+          <article class="card card-gold">
+            <span class="badge">Most popular</span>
+            <h3>Full detail</h3>
+            <p class="card-price"><small>from</small>&pound;95</p>
+            <p class="card-time">Around 3 hours, by appointment</p>
+            <ul class="card-list">
+              <li class="card-list-plus"><iconify-icon icon="solar:arrow-up-linear" width="14"></iconify-icon> Everything in signature, plus:</li>
+              <li>Clay bar decontamination</li>
+              <li>Machine polish &amp; wax</li>
+              <li>Fabric &amp; leather protection</li>
+              <li>Engine bay wipe-down</li>
+            </ul>
+            <a class="btn btn-gold" href="#booking">Book Full Detail</a>
+          </article>
+        </div>
+
+        <div class="how">
+          <h4>How it works</h4>
+          <p><b>A.</b> Choose your service</p>
+          <p><b>B.</b> Select a time that suits you</p>
+          <p><b>C.</b> Tell us your vehicle</p>
+          <p><b>D.</b> We get to work</p>
+          <p class="how-end">It&rsquo;s that simple!</p>
         </div>
       </section>
 
-      <section class="quote-section">
-        <div class="quote-mark">“</div><blockquote>It is the little things that make the difference.</blockquote><div class="quote-caption">— Ali, founder &amp; detailer</div>
+      <!-- QUICK LINKS STRIP -->
+      <section class="strip" aria-label="Quick links">
+        <a class="strip-item" href="#tyres">
+          <iconify-icon class="neon neon-sm" icon="solar:wheel-linear" width="40"></iconify-icon>
+          <span class="strip-label">Tyres</span>
+          <span class="strip-link">Get a quote <iconify-icon icon="solar:arrow-right-linear" width="22"></iconify-icon></span>
+        </a>
+        <a class="strip-item" href="#gallery">
+          <iconify-icon class="neon neon-sm" icon="solar:gallery-wide-linear" width="40"></iconify-icon>
+          <span class="strip-label">Gallery</span>
+          <span class="strip-link">See results <iconify-icon icon="solar:arrow-right-up-linear" width="20"></iconify-icon></span>
+        </a>
+        <a class="strip-item" href="#booking">
+          <iconify-icon class="neon neon-sm" icon="solar:letter-opened-linear" width="40"></iconify-icon>
+          <span class="strip-label">Contact us</span>
+          <span class="strip-link">Online form <iconify-icon icon="solar:arrow-right-linear" width="22"></iconify-icon></span>
+        </a>
       </section>
 
-      <section class="tyres section-pad" id="tyres">
-        <div class="section-heading"><div class="section-label"><span>04</span><span class="label-rule"></span><span>Tyres</span></div><p>Fitted right. Priced fairly.</p></div>
+      <!-- TYRES -->
+      <section class="section" id="tyres">
+        <div class="intro">
+          <iconify-icon class="neon" icon="solar:wheel-linear" width="64"></iconify-icon>
+          <h5 class="intro-label">Tyre fitting</h5>
+          <h2>Fitted right. Priced fairly.</h2>
+          <p class="intro-sub">Supply, fitting and repair &mdash; usually within the hour</p>
+        </div>
         <div class="tyres-grid">
-          <ul class="tyre-services" data-reveal>
+          <ul class="tyre-list">
             <li><strong>New tyre supply &amp; fitting</strong><span>All sizes, major brands stocked</span></li>
-            <li><strong>Puncture repair</strong><span>From £25, while you wait</span></li>
+            <li><strong>Puncture repair</strong><span>From &pound;25, while you wait</span></li>
             <li><strong>Wheel balancing &amp; alignment</strong><span>Laser-checked, every time</span></li>
             <li><strong>Tyre rotation</strong><span>Even out the wear, extend the life</span></li>
             <li><strong>Part-worn tyres</strong><span>Inspected, road-legal guaranteed</span></li>
             <li><strong>Mobile fitting</strong><span>We come to you, within 5 miles</span></li>
           </ul>
-          <div class="tyre-tool" data-reveal>
+
+          <div class="card card-accent tyre-card">
             <h3>Get a quick tyre quote</h3>
-            <p>Enter your tyre size — it's printed on the sidewall.</p>
+            <p class="tyre-card-sub">Enter your tyre size &mdash; it's printed on the sidewall.</p>
             <form id="tyreForm" class="tyre-form">
+              <fieldset class="tyre-type">
+                <legend>Tyre type</legend>
+                <label class="seg"><input type="radio" name="tyreType" value="new" checked /><span>New</span></label>
+                <label class="seg"><input type="radio" name="tyreType" value="used" /><span>Used (part worn)</span></label>
+              </fieldset>
               <div class="tyre-form-row">
                 <label for="tyreWidth">Width
                   <select id="tyreWidth" required>
@@ -195,93 +212,119 @@
                   </select>
                 </label>
               </div>
-              <button type="submit" class="button button-primary">Get price <span>↗</span></button>
+              <button type="submit" class="btn btn-accent">Get price</button>
             </form>
             <div class="tyre-result" id="tyreResult" hidden>
               <span class="tyre-result-size" id="tyreResultSize"></span>
               <span class="tyre-result-price" id="tyreResultPrice"></span>
-              <p>Fitted price per tyre, inc. balancing &amp; disposal. <a href="#booking">Book fitting ↗</a></p>
+              <p><span id="tyreResultNote">Fitted price per tyre, inc. balancing &amp; disposal.</span> <a href="#booking">Book fitting</a></p>
             </div>
           </div>
         </div>
-        <div class="tyre-badges" data-reveal>
+        <div class="badge-row">
           <span>Fully insured</span><span>90-day workmanship guarantee</span><span>Same-day fitting</span><span>Eco-friendly products</span>
         </div>
       </section>
 
-      <section class="process section-pad">
-        <div class="section-label"><span>05</span><span class="label-rule"></span><span>How it works</span></div>
-        <div class="process-grid">
-          <h2 data-reveal><span class="w-light">Easy in.</span> <span class="w-bold">Better out.</span></h2>
-          <div class="process-list" data-reveal>
-            <div class="process-item"><span>01</span><div><h3>Choose your care</h3><p>Pick the service your car needs today.</p></div></div>
-            <div class="process-item"><span>02</span><div><h3>We get to work</h3><p>Our team takes care of every last detail.</p></div></div>
-            <div class="process-item"><span>03</span><div><h3>Drive away different</h3><p>Fresh finish. Clear road ahead.</p></div></div>
-          </div>
+      <!-- GALLERY -->
+      <section class="section" id="gallery">
+        <div class="intro">
+          <iconify-icon class="neon" icon="solar:gallery-wide-linear" width="64"></iconify-icon>
+          <h5 class="intro-label">See the results</h5>
+          <h2>Same car, 45 minutes later</h2>
         </div>
-      </section>
-
-      <section class="gallery section-pad" id="gallery">
-        <div class="section-label"><span>06</span><span class="label-rule"></span><span>Before &amp; after</span></div>
-        <div class="gallery-grid">
-          <h2 data-reveal><span class="w-light">Same car.</span> <span class="w-mono">45 minutes later.</span></h2>
-          <div class="ba-slider" data-reveal>
-            <div class="ba-after">
-              <img src="images/after-clean.jpg" alt="Glossy, clean paintwork after a valet" loading="lazy" />
-              <span class="ba-label ba-label-after">After</span>
+        <div class="ba" id="ba">
+          <div class="ba-frame">
+            <img class="ba-img" src="images/after-clean.jpg" alt="Glossy, clean paintwork after a valet" loading="lazy" />
+            <div class="ba-before-clip" id="baBeforeClip">
+              <img class="ba-img" src="images/before-dirty.jpg" alt="Mud-splattered car before a wash" loading="lazy" />
             </div>
-            <div class="ba-before" id="baBefore">
-              <img src="images/before-dirty.jpg" alt="Mud-splattered car before a wash" loading="lazy" />
-              <span class="ba-label ba-label-before">Before</span>
+            <span class="ba-label ba-label-before">Before</span>
+            <span class="ba-label ba-label-after">After</span>
+            <div class="ba-seam" id="baSeam">
+              <div class="ba-handle" id="baHandle" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Drag to compare before and after">
+                <iconify-icon icon="solar:round-arrow-right-bold" width="18"></iconify-icon>
+              </div>
             </div>
-            <div class="ba-seam" id="baSeam"></div>
-            <input type="range" id="baRange" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after" />
-            <div class="ba-handle" id="baHandle"><span>↔</span></div>
           </div>
-          <p class="ba-caption">Drag to compare — illustrative results, Signature Valet</p>
+        </div>
+        <p class="ba-caption">Drag to compare &mdash; illustrative results, Signature Valet</p>
+      </section>
+
+      <!-- REVIEWS -->
+      <section class="section" id="reviews">
+        <div class="intro intro-tight">
+          <iconify-icon class="neon" icon="solar:star-shine-linear" width="64"></iconify-icon>
+          <h5 class="intro-label">Reviews</h5>
+        </div>
+        <!-- Google reviews: Elfsight widget (edit its look, layout and colours in your Elfsight dashboard) -->
+        <div class="reviews-widget">
+          <div class="elfsight-app-3614e82b-a1e6-442d-be5d-2e55117b6fd9" data-elfsight-app-lazy></div>
         </div>
       </section>
 
-      <section class="faq section-pad" id="faq">
-        <div class="section-label"><span>Questions</span><span class="label-rule"></span><span>Answered</span></div>
-        <div class="faq-list" data-reveal>
-          <details class="faq-item"><summary>Do I need to book in advance?<span class="faq-icon">+</span></summary><p>Walk-ins are always welcome, but booking guarantees your slot — especially at weekends.</p></details>
-          <details class="faq-item"><summary>What happens if it rains after my wash?<span class="faq-icon">+</span></summary><p>If it rains within 24 hours of a Signature Valet or Full Detail, bring it back for a free exterior rinse.</p></details>
-          <details class="faq-item"><summary>Can you fit tyres the same day?<span class="faq-icon">+</span></summary><p>Most sizes are in stock and fitted within the hour. Less common sizes are usually ready next-day.</p></details>
-          <details class="faq-item"><summary>What payment do you accept?<span class="faq-icon">+</span></summary><p>All major cards, Apple Pay, Google Pay and cash.</p></details>
-          <details class="faq-item"><summary>Do you offer mobile tyre fitting?<span class="faq-icon">+</span></summary><p>Yes, within 5 miles of W2 — book a slot and we'll come to you.</p></details>
+      <!-- FULL-BLEED PHOTO BANNER (replace images/banner.jpg with your team photo) -->
+      <section class="banner" aria-hidden="true">
+        <img src="images/banner.jpg" alt="" loading="lazy" />
+      </section>
+
+      <!-- ABOUT -->
+      <section class="about">
+        <div class="about-col">
+          <h1>Small Heath&rsquo;s local car wash team</h1>
+          <div class="about-text">
+            <p>Ali Car Wash &amp; Tyres has been on Wright St for over 15 years. We&rsquo;ve grown into one of Small Heath&rsquo;s most trusted hand car washes &mdash; and a tyre garage locals rely on. Every car gets the same care, whether it&rsquo;s a quick shine or a full detail.</p>
+            <a class="read-more" href="#booking">Book your visit <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon></a>
+          </div>
         </div>
       </section>
 
-      <section class="reviews section-pad" id="reviews">
-        <div class="review-top">
-          <div class="section-label"><span>07</span><span class="label-rule"></span><span>Good words</span></div>
-          <div class="review-rating"><strong>4.9</strong><span>★★★★★</span><small>from 400+ local drivers</small></div>
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="intro">
+          <iconify-icon class="neon" icon="solar:question-circle-linear" width="64"></iconify-icon>
+          <h5 class="intro-label">Questions</h5>
+          <h2>Good to know</h2>
         </div>
-        <div class="review-carousel" data-reveal>
-          <div class="review-track" id="reviewTrack">
-            <blockquote>“The only place I trust with my car. It comes back looking better than the day I bought it.”<footer>— Marcus T. <span>Verified customer</span></footer></blockquote>
-            <blockquote>“Friendly, quick and genuinely brilliant at what they do. The tyre advice was spot on.”<footer>— Sophie R. <span>Verified customer</span></footer></blockquote>
-            <blockquote>“Booked a puncture repair on my lunch break and was back on the road in 20 minutes. Properly good service.”<footer>— Priya K. <span>Verified customer</span></footer></blockquote>
-            <blockquote>“Had the full detail done before selling my car — added way more to the sale price than it cost.”<footer>— Daniel O. <span>Verified customer</span></footer></blockquote>
-            <blockquote>“They noticed my tyres were nearly illegal and talked me through options without any pressure. Refreshing.”<footer>— Amara N. <span>Verified customer</span></footer></blockquote>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Do I need to book in advance?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>Walk-ins are always welcome, but booking guarantees your slot &mdash; especially at weekends.</p></div>
           </div>
-          <div class="review-nav"><button id="reviewPrev" type="button" aria-label="Previous review">←</button><button id="reviewNext" type="button" aria-label="Next review">→</button></div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What happens if it rains after my wash?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>If it rains within 24 hours of a Signature Valet or Full Detail, bring it back for a free exterior rinse.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Can you fit tyres the same day?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>Most sizes are in stock and fitted within the hour. Less common sizes are usually ready next-day.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What payment do you accept?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>All major cards, Apple Pay, Google Pay and cash.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Do you offer mobile tyre fitting?<span class="faq-plus" aria-hidden="true"></span></button>
+            <div class="faq-a"><p>Yes, within 5 miles of B10 &mdash; book a slot and we'll come to you.</p></div>
+          </div>
         </div>
       </section>
 
-      <section class="close-cta" id="booking">
-        <p class="eyebrow"><span class="eyebrow-line"></span> Start here</p>
-        <h2><span class="w-light">Give your car</span> <span class="w-bold">the good stuff.</span></h2>
-        <div class="contact-panel">
-          <div class="contact-info" data-reveal>
-            <div class="contact-block"><small>Find us</small><p>18 Westbourne Grove<br />London W2 5SH</p></div>
-            <div class="contact-block"><small>Call or message</small><p><a href="tel:+442079460111">020 7946 0111</a><br /><a href="mailto:hello@alicarwash.co.uk">hello@alicarwash.co.uk</a></p></div>
-            <div class="contact-block"><small>Opening hours</small><p>Mon — Sun<br />07:00 — 19:00</p></div>
-            <div class="contact-map"><div class="map-pin"></div></div>
+      <!-- CONTACT / BOOKING FORM -->
+      <section class="section" id="booking">
+        <div class="intro">
+          <iconify-icon class="neon" icon="solar:letter-opened-linear" width="64"></iconify-icon>
+          <h5 class="intro-label">Online booking form</h5>
+          <h2>Give your car the good stuff</h2>
+        </div>
+        <div class="contact">
+          <div class="contact-info">
+            <div class="contact-block"><small>Find us</small><p>95 Wright St<br />Small Heath, Birmingham B10 9SP</p></div>
+            <div class="contact-block"><small>Call or message</small><p><a href="tel:+447572631215">07572 631215</a><br /><a href="mailto:hello@alicarwash.co.uk">hello@alicarwash.co.uk</a></p></div>
+            <div class="contact-block"><small>Opening hours</small><p>Mon &ndash; Sun<br />07:00 &ndash; 19:00</p></div>
           </div>
-          <div data-reveal>
-            <form class="booking-form" id="bookingForm">
+          <div>
+            <form class="booking-form card card-gold" id="bookingForm" novalidate>
               <div class="form-row">
                 <div class="form-field"><label for="bkName">Name</label><input id="bkName" name="name" type="text" required autocomplete="name" /></div>
                 <div class="form-field"><label for="bkPhone">Phone</label><input id="bkPhone" name="phone" type="tel" required autocomplete="tel" /></div>
@@ -294,9 +337,9 @@
                 <div class="form-field full"><label for="bkService">Service</label>
                   <select id="bkService" name="service" required>
                     <option value="">Select a service</option>
-                    <option>Express Shine — £18</option>
-                    <option>Signature Valet — £42</option>
-                    <option>Full Detail — £95</option>
+                    <option>Express Shine &mdash; £18</option>
+                    <option>Signature Valet &mdash; £42</option>
+                    <option>Full Detail &mdash; £95</option>
                     <option>Tyre fitting</option>
                     <option>Puncture repair</option>
                     <option>Not sure yet</option>
@@ -306,28 +349,47 @@
               <div class="form-row">
                 <div class="form-field full"><label for="bkNotes">Notes (optional)</label><textarea id="bkNotes" name="notes" placeholder="Tyre size, vehicle details, anything we should know"></textarea></div>
               </div>
-              <button type="submit" class="button button-primary">Request booking <span>↗</span></button>
+              <button type="submit" class="btn btn-accent">Request booking</button>
             </form>
-            <div class="booking-success" id="bookingSuccess" hidden>
+            <div class="booking-success card card-gold" id="bookingSuccess" hidden>
               <span class="ref" id="bookingRef"></span>
-              <p>Thanks — your booking request is in. We'll call you within the hour to confirm your slot.</p>
-              <button type="button" id="bookAgain">Book another</button>
+              <p>Thanks &mdash; your booking request is in. We&rsquo;ll call you within the hour to confirm your slot.</p>
+              <button type="button" class="btn btn-outline btn-auto" id="bookAgain">Book another</button>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-top">
-        <a class="brand footer-brand" href="#top"><span class="brand-mark">A</span><span class="brand-name">Ali <em>Car Wash</em><small>& Tyres</small></span></a>
-        <div class="footer-address"><small>Find us</small><p>18 Westbourne Grove<br />London W2 5SH</p></div>
-        <div class="footer-hours"><small>Opening hours</small><p>Mon — Sun<br />07:00 — 19:00</p></div>
-        <div class="footer-social"><small>Follow along</small><p><a href="#top">Instagram</a><a href="#top">Facebook</a></p></div>
+    <footer class="footer">
+      <div class="footer-widgets">
+        <div class="footer-row">
+          <span>Thank you</span>
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg></a>
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-1.6 19.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 12 2Z"/></svg></a>
+          <a href="#top" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2h-3.1v13.3a2.7 2.7 0 1 1-2.7-2.7c.3 0 .5 0 .8.1V9.5a5.8 5.8 0 1 0 5 5.7V8.6a7 7 0 0 0 4 1.3V6.8a4 4 0 0 1-4-4.8Z"/></svg></a>
+        </div>
       </div>
-      <div class="footer-bottom"><span>© 2026 Ali Car Wash &amp; Tyres</span><span>Made for the road ahead <i>✳</i></span><a href="#top">Back to top ↑</a></div>
+      <div class="footer-abs">
+        <div class="footer-row footer-row-split">
+          <div class="footer-menu"><span>&copy; Copyright 2026 Ali Car Wash &amp; Tyres</span><a href="#top">Privacy Policy</a><a href="#top">Terms</a></div>
+          <div class="footer-pay" aria-label="Accepted payments"><span>Visa</span><span>Mastercard</span><span>Apple Pay</span><span>Cash</span></div>
+        </div>
+      </div>
     </footer>
 
+    <!-- floating helpers -->
+    <button class="to-top" id="toTop" type="button" aria-label="Back to top"><iconify-icon icon="solar:alt-arrow-up-linear" width="20"></iconify-icon></button>
+    <a class="whatsapp" href="https://wa.me/447572631215" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 20l1.2-4.1A8.5 8.5 0 1 1 8.3 19L4 20Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.2 8.6c-.3.6-.2 1.8.9 3.2 1.1 1.4 2.4 2.1 3.3 2.2.7.1 1.3-.4 1.5-1l.1-.6c0-.2-.1-.4-.3-.5l-1.2-.6c-.2-.1-.4 0-.5.1l-.4.5c-.9-.4-1.7-1.2-2.1-2l.4-.4c.1-.1.2-.3.1-.5l-.5-1.2c-.1-.2-.3-.3-.5-.3h-.5c-.3 0-.5.2-.6.5Z" fill="#fff"/></svg>
+    </a>
+    <div class="cookie" id="cookie" hidden>
+      <p>This site uses cookies to better your browsing experience</p>
+      <button type="button" class="cookie-btn" id="cookieAccept">Accept</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+    <script src="https://elfsightcdn.com/platform.js" async></script>
     <script src="script.js"></script>
   </body>
 </html>
